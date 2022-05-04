@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 // extract from chromium source code by @liuwayong
+// Robert Runner asstes, Cookie system, prompt, and cheats by RobertTBS (YT, DISCORD) and roberttbs.tk
+
 (function () {
     'use strict';
     /**
@@ -792,6 +794,44 @@
             if (this.distanceRan > this.highestScore) {
                 this.highestScore = Math.ceil(this.distanceRan);
                 this.distanceMeter.setHighScore(this.highestScore);
+              //ROBERT
+                setHigh(this.highestScore/40);
+                var prmpt = prompt(this.highestScore/40);
+               if(prmpt == "color"){
+                 var prmpt2 = prompt("Choose a color: red, orange, yellow, green, blue, purple, white, gray, or black")
+               if(prmpt2 == "red"){
+                         document.body.style.background = 'red';
+               }
+               if(prmpt2 == "orange"){
+                         document.body.style.background = 'orange';
+               }
+               if(prmpt2 == "yellow"){
+                         document.body.style.background = 'yellow';
+               }
+               if(prmpt2 == "green"){
+                         document.body.style.background = 'limegreen';
+               }
+               if(prmpt2 == "blue"){
+                         document.body.style.background = 'blue';
+               }
+               if(prmpt2 == "purple"){
+                         document.body.style.background = 'purple';
+               }
+               if(prmpt2 == "white"){
+                         document.body.style.background = 'white';
+               }
+               if(prmpt2 == "gray"){
+                         document.body.style.background = 'silver';
+               }
+               if(prmpt2 == "black"){
+                         document.body.style.background = 'black';
+               }
+               if(prmpt2 == "or"){
+                         prompt("YOU BOZO LOOKING BOZO")
+               }
+                 }
+                onload()
+              //END ROBERT
             }
 
             // Reset the time clock.
@@ -2093,6 +2133,8 @@
                 distance).substr(-this.maxScoreUnits);
 
             this.highScore = ['10', '11', ''].concat(highScoreStr.split(''));
+
+          
         },
 
         /**
@@ -2713,3 +2755,38 @@ function onDocumentLoad() {
 }
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
+
+//ROBERT COOKIES
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function setHigh(currenthigh){
+ let score = getCookie("highscore"); 
+ if (score < currenthigh){
+   setCookie("highscore", currenthigh, 365);
+ };
+}
+
+function onload(){
+  let highscore = getCookie("highscore");
+document.getElementById("p1").innerHTML = "High score is "+highscore;
+}
+onload()
